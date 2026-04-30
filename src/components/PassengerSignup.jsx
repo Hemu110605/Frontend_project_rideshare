@@ -38,8 +38,17 @@ export default function PassengerSignup({ setCurrentPage }) {
     };
 
     const handleSendEmailOtp = async () => {
-        if (!formData.email.trim()) {
+        const trimmedEmail = formData.email.trim();
+        
+        if (!trimmedEmail) {
             setError('Please enter email first');
+            return;
+        }
+
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(trimmedEmail)) {
+            setError('Please enter a valid email address');
             return;
         }
 
@@ -49,7 +58,7 @@ export default function PassengerSignup({ setCurrentPage }) {
             setSuccess('');
 
             const response = await authService.sendEmailOtp(
-                formData.email,
+                trimmedEmail,
                 formData.firstName || 'User'
             );
 
