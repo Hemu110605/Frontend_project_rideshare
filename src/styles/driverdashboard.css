@@ -1,0 +1,715 @@
+.driver-dashboard {
+    width: 100%;
+    min-height: 100vh;
+    padding: 24px 20px 40px;
+    background:
+        radial-gradient(circle at 20% 80%, rgba(242, 197, 182, 0.10), transparent 38%),
+        radial-gradient(circle at 80% 20%, rgba(13, 107, 115, 0.12), transparent 40%),
+        linear-gradient(135deg, var(--bg) 0%, var(--bg-2) 100%);
+    color: var(--text);
+    box-sizing: border-box;
+}
+
+/* TOP TABS */
+.driver-top-tabs {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 26px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.tab-btn {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--muted);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: 0.25s ease;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.09);
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* HEADER */
+.driver-header {
+    margin-bottom: 26px;
+}
+
+.driver-header h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin: 0 0 8px;
+    color: var(--text);
+}
+
+.driver-header p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+/* OVERVIEW STATS */
+.driver-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.driver-stat-card {
+    background:
+        linear-gradient(135deg, rgba(242, 197, 182, 0.10), rgba(13, 107, 115, 0.10)),
+        rgba(15, 42, 48, 0.72);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 22px;
+    min-height: 160px;
+    box-shadow: var(--shadow);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.driver-stat-card h2 {
+    font-size: 2.2rem;
+    line-height: 1.1;
+    margin: 18px 0 8px;
+    font-weight: 700;
+    color: var(--text);
+    word-break: break-word;
+}
+
+.driver-stat-card p {
+    color: var(--muted);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.driver-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.driver-icon.teal {
+    background: var(--accent);
+}
+
+.driver-icon.blue {
+    background: var(--secondary);
+}
+
+.driver-icon.purple {
+    background: var(--primary);
+}
+
+.driver-icon.orange {
+    background: var(--primary-dark);
+}
+
+/* TWO-COLUMN OVERVIEW PANELS */
+.overview-panels {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(320px, 1fr);
+    gap: 22px;
+    align-items: start;
+}
+
+/* PANELS */
+.driver-panel {
+    background:
+        linear-gradient(135deg, rgba(242, 197, 182, 0.10), rgba(13, 107, 115, 0.08)),
+        rgba(15, 42, 48, 0.72);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 20px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+}
+
+.panel-header h2 {
+    font-size: 1.6rem;
+    margin: 0;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.panel-header span {
+    background: rgba(242, 197, 182, 0.16);
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* REQUESTS + RIDES */
+.request-list,
+.ride-list-driver,
+.booking-list,
+.transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.request-card,
+.driver-ride-card,
+.booking-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 18px;
+    padding: 16px 18px;
+}
+
+.request-left,
+.booking-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+    flex: 1;
+}
+
+.request-avatar,
+.booking-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.request-left h3,
+.driver-ride-card h3,
+.booking-left h3 {
+    margin: 0 0 4px;
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.request-left p,
+.driver-ride-card p,
+.request-left small,
+.booking-left p,
+.booking-left small {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.35;
+}
+
+.request-right,
+.booking-right {
+    text-align: right;
+    flex-shrink: 0;
+}
+
+.request-right strong {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text);
+    font-size: 1.1rem;
+}
+
+.request-actions,
+.booking-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.accept-btn,
+.decline-btn,
+.reject-btn,
+.submit-ride-btn,
+.vehicle-update-btn {
+    border: none;
+    border-radius: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.accept-btn {
+    background: var(--accent);
+    color: #ffffff;
+}
+
+.accept-btn:hover {
+    background: var(--accent-soft);
+    transform: translateY(-1px);
+}
+
+.decline-btn,
+.reject-btn {
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.decline-btn:hover,
+.reject-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+.driver-ride-card {
+    align-items: flex-start;
+}
+
+.ride-fare {
+    color: var(--mint);
+    font-size: 1.6rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* POST RIDE */
+.post-ride-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+}
+
+.post-ride-form input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px;
+    color: var(--text);
+    outline: none;
+    min-width: 0;
+}
+
+.post-ride-form input::placeholder {
+    color: var(--muted);
+}
+
+.post-ride-form input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.submit-ride-btn {
+    grid-column: span 2;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #ffffff;
+    padding: 14px;
+}
+
+.submit-ride-btn:hover {
+    background: linear-gradient(135deg, var(--primary-soft), var(--accent-soft));
+}
+
+.panel-text {
+    color: var(--muted);
+    font-size: 1rem;
+    margin: 0;
+}
+
+/* BOOKINGS */
+.booking-card {
+    background:
+        linear-gradient(135deg, rgba(242, 197, 182, 0.08), rgba(13, 107, 115, 0.08)),
+        rgba(15, 42, 48, 0.65);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.status {
+    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    text-transform: capitalize;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.status.confirmed {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+}
+
+.status.pending {
+    background: rgba(255, 193, 7, 0.2);
+    color: #facc15;
+}
+
+.booking-right h2 {
+    color: var(--mint);
+    margin: 0 0 10px;
+}
+
+/* VEHICLE PAGE */
+.vehicle-page {
+    width: 100%;
+}
+
+.vehicle-header {
+    margin-bottom: 18px;
+}
+
+.vehicle-subtitle {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+.vehicle-main-card {
+    background:
+        linear-gradient(135deg, rgba(242, 197, 182, 0.08), rgba(13, 107, 115, 0.08)),
+        rgba(15, 42, 48, 0.72);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.vehicle-banner-image {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+.vehicle-info-list {
+    padding: 8px 22px;
+}
+
+.vehicle-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.vehicle-info-row:last-child {
+    border-bottom: none;
+}
+
+.vehicle-label {
+    color: var(--muted);
+    font-size: 0.98rem;
+    font-weight: 500;
+}
+
+.vehicle-value {
+    color: var(--text);
+    font-size: 0.98rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+.vehicle-verified {
+    color: var(--mint);
+}
+
+.vehicle-update-btn {
+    width: 100%;
+    margin-top: 18px;
+    padding: 15px 18px;
+    border-radius: 14px;
+    color: #ffffff;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+}
+
+.vehicle-update-btn:hover {
+    background: linear-gradient(135deg, var(--primary-soft), var(--accent-soft));
+    transform: translateY(-1px);
+}
+
+/* EARNINGS */
+.driver-earnings-page {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.earnings-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.earnings-summary-card {
+    background:
+        linear-gradient(135deg, rgba(242, 197, 182, 0.10), rgba(13, 107, 115, 0.10)),
+        rgba(15, 42, 48, 0.72);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 22px 18px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.earnings-summary-card p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin: 0 0 10px;
+}
+
+.earnings-summary-card h3 {
+    font-size: 2rem;
+    color: var(--mint);
+    margin: 0;
+    font-weight: 700;
+}
+
+.transaction-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-left h3 {
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.transaction-left p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.transaction-right {
+    color: var(--mint);
+    font-size: 1.6rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .driver-stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .earnings-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .driver-dashboard {
+        padding: 20px 14px 32px;
+    }
+
+    .driver-header h1 {
+        font-size: 2rem;
+    }
+
+    .driver-stats-grid,
+    .earnings-summary-grid,
+    .post-ride-form {
+        grid-template-columns: 1fr;
+    }
+
+    .submit-ride-btn {
+        grid-column: span 1;
+    }
+
+    .request-card,
+    .driver-ride-card,
+    .booking-card,
+    .transaction-item,
+    .vehicle-info-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .request-right,
+    .booking-right {
+        width: 100%;
+        text-align: left;
+    }
+
+    .request-actions,
+    .booking-actions {
+        justify-content: flex-start;
+    }
+
+    .ride-fare,
+    .transaction-right,
+    .vehicle-value {
+        text-align: left;
+    }
+
+    .vehicle-banner-image {
+        height: 220px;
+    }
+}
+
+@media (max-width: 520px) {
+    .driver-top-tabs {
+        gap: 10px;
+    }
+
+    .tab-btn {
+        width: 100%;
+    }
+
+    .driver-stat-card h2,
+    .earnings-summary-card h3 {
+        font-size: 1.7rem;
+    }
+
+    .panel-header h2 {
+        font-size: 1.3rem;
+    }
+}
+/* ================= KEEP ALL YOUR ORIGINAL CSS ABOVE SAME ================= */
+
+/* (Your full CSS remains unchanged till SETTINGS part) */
+
+
+/* ================= SETTINGS (CLEAN + FIXED) ================= */
+
+.settings-list {
+    display: grid;
+    gap: 16px;
+}
+
+.setting-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+
+    width: 100%;
+    padding: 18px 20px;
+
+    border-radius: 18px;
+    background: rgba(15, 42, 48, 0.75);
+    border: 1px solid var(--border);
+
+    box-sizing: border-box;
+}
+
+.setting-card > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.setting-card h3 {
+    margin: 0 0 6px;
+    color: var(--text);
+}
+
+.setting-card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+
+/* ================= FINAL TOGGLE FIX ================= */
+
+.toggle-switch {
+    width: 52px;
+    height: 28px;
+    border-radius: 999px;
+    background: #475569;
+    border: none;
+    padding: 2px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.toggle-switch.active {
+    background: #00d4c7;
+    justify-content: flex-end;
+}
+
+.toggle-knob {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ffffff;
+    flex-shrink: 0;
+    display: block;
+    transform: none;
+}
+
+/* ================= LOGOUT BUTTON ================= */
+
+.logout-tab-btn {
+    margin-left: auto;
+    background: rgba(239, 68, 68, 0.18);
+    color: #fecaca;
+    border-color: rgba(239, 68, 68, 0.35);
+}
+
+.logout-tab-btn:hover {
+    background: rgba(239, 68, 68, 0.28);
+    color: #ffffff;
+}

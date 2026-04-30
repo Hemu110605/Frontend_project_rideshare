@@ -1,0 +1,222 @@
+* {
+    box-sizing: border-box;
+}
+
+.driver-login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background:
+        radial-gradient(circle at top right, rgba(18, 213, 201, 0.18), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(92, 114, 255, 0.14), transparent 24%),
+        linear-gradient(135deg, #04111f 0%, #071a2b 48%, #031018 100%);
+}
+
+.driver-login-card {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 36px 32px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.driver-login-card h1 {
+    margin: 0 0 10px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.driver-login-card p {
+    margin: 0 0 28px;
+    text-align: center;
+    color: #c9d6df;
+    font-size: 0.98rem;
+}
+
+.driver-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.driver-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.driver-form-group label {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.driver-form-group input {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(6, 24, 34, 0.9);
+    color: #ffffff;
+    font-size: 0.96rem;
+    outline: none;
+}
+
+.driver-form-group input::placeholder {
+    color: #97a7b4;
+}
+
+.driver-form-group input:focus {
+    border-color: #13d1c8;
+    box-shadow: 0 0 0 3px rgba(19, 209, 200, 0.12);
+}
+
+.driver-login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: -4px;
+}
+
+.driver-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d8e1e8;
+    font-size: 0.9rem;
+}
+
+.driver-forgot-btn,
+.driver-signup-link {
+    background: transparent;
+    border: none;
+    color: #00d4c7;
+    /* ✅ teal */
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.driver-forgot-btn:hover,
+.driver-signup-link:hover {
+    color: #00b3a8;
+}
+
+.driver-login-btn {
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #0fbdb4 0%, #d8a590 100%);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.driver-login-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.96;
+}
+
+.driver-login-footer {
+    margin: 8px 0 0;
+    text-align: center;
+    color: #d8e1e8;
+    font-size: 0.94rem;
+}
+
+@media (max-width: 600px) {
+    .driver-login-card {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .driver-login-card h1 {
+        font-size: 1.7rem;
+    }
+
+    .driver-login-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+.driver-login-card input {
+    background: rgba(6, 24, 34, 0.9) !important;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.14) !important;
+}
+
+.driver-login-card input::placeholder {
+    color: #97a7b4 !important;
+}
+
+.driver-login-card input:focus {
+    background: rgba(6, 24, 34, 0.9) !important;
+    border-color: #13d1c8 !important;
+    box-shadow: 0 0 0 3px rgba(19, 209, 200, 0.12) !important;
+}
+
+/* MATCH PASSENGER LOGIN BUTTON */
+.driver-login-btn {
+    background: linear-gradient(90deg, #0fbdb4 0%, #d8a590 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+}
+
+/* MATCH FORGOT PASSWORD COLOR */
+.driver-forgot-btn {
+    color: #13d1c8 !important;
+    font-weight: 600;
+}
+
+/* HOVER SAME AS PASSENGER */
+.driver-forgot-btn:hover {
+    color: #6fe9e2 !important;
+}
+
+.driver-signup-link,
+.driver-signup-link span,
+.driver-signup-link a,
+.driver-login-footer .driver-signup-link,
+.driver-login-footer .driver-signup-link span,
+.driver-login-footer .driver-signup-link a {
+    color: #00d4c7 !important;
+}
+
+.driver-signup-link:hover,
+.driver-signup-link span:hover,
+.driver-signup-link a:hover,
+.driver-login-footer .driver-signup-link:hover,
+.driver-login-footer .driver-signup-link span:hover,
+.driver-login-footer .driver-signup-link a:hover {
+    color: #00b3a8 !important;
+}
+
+.driver-forgot-btn,
+.driver-signup-link,
+.driver-forgot-btn a,
+.driver-signup-link a {
+    text-decoration: none !important;
+}
+.driver-success {
+    background: rgba(0, 212, 199, 0.12);
+    color: #00d4c7;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    text-align: center;
+}

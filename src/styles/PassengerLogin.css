@@ -1,0 +1,234 @@
+* {
+    box-sizing: border-box;
+}
+
+.passenger-login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background:
+        radial-gradient(circle at top right, rgba(18, 213, 201, 0.18), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(92, 114, 255, 0.14), transparent 24%),
+        linear-gradient(135deg, #04111f 0%, #071a2b 48%, #031018 100%);
+}
+
+.passenger-login-card {
+    width: 100%;
+    max-width: 520px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    padding: 36px 32px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.passenger-login-card h1 {
+    margin: 0 0 10px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.passenger-login-card p {
+    margin: 0 0 28px;
+    text-align: center;
+    color: #c9d6df;
+    font-size: 0.98rem;
+}
+
+.passenger-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.passenger-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.passenger-form-group label {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.passenger-form-group input {
+    width: 100%;
+    height: 52px;
+    padding: 0 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(6, 24, 34, 0.9);
+    color: #ffffff;
+    font-size: 0.96rem;
+    outline: none;
+}
+
+.passenger-form-group input::placeholder {
+    color: #97a7b4;
+}
+
+.passenger-form-group input:focus {
+    border-color: #13d1c8;
+    box-shadow: 0 0 0 3px rgba(19, 209, 200, 0.12);
+}
+
+.passenger-login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: -4px;
+}
+
+.passenger-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d8e1e8;
+    font-size: 0.9rem;
+}
+
+.passenger-forgot-btn,
+.passenger-signup-link,
+.passenger-back-btn {
+    background: transparent;
+    border: none;
+    color: #13d1c8;
+    cursor: pointer;
+    font-size: 0.92rem;
+    font-weight: 600;
+}
+
+.passenger-forgot-btn:hover,
+.passenger-signup-link:hover,
+.passenger-back-btn:hover {
+    color: #6fe9e2;
+}
+
+.passenger-login-btn {
+    width: 100%;
+    height: 52px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(90deg, #0fbdb4 0%, #d8a590 100%);
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.passenger-login-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.96;
+}
+
+.passenger-divider {
+    position: relative;
+    text-align: center;
+    margin: 8px 0 2px;
+}
+
+.passenger-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.passenger-divider span {
+    position: relative;
+    padding: 0 12px;
+    background: transparent;
+    color: #d8e1e8;
+    font-size: 0.88rem;
+}
+
+.passenger-social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.passenger-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+    padding: 0 16px;
+    height: 50px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.passenger-social-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.social-icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.apple-icon {
+    color: white;
+}
+
+/* center text nicely */
+.social-text {
+    flex: 1;
+    text-align: center;
+    margin-right: 22px;
+}
+
+.passenger-login-footer {
+    margin: 4px 0 0;
+    text-align: center;
+    color: #d8e1e8;
+    font-size: 0.94rem;
+}
+
+.passenger-error {
+    color: #ff7b88;
+    font-size: 0.92rem;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .passenger-login-card {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .passenger-login-card h1 {
+        font-size: 1.7rem;
+    }
+
+    .passenger-login-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
