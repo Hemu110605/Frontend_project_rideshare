@@ -1,22 +1,9 @@
 import { io } from 'socket.io-client';
 
-// Use the same backend URL as API calls
-const URL = import.meta.env.VITE_API_BASE_URL;
-
-console.log("Socket connecting to:", URL);
-
-// Enhanced socket configuration with better stability
-export const socket = io(URL, {
-    transports: ['websocket', 'polling'],
-    withCredentials: true,
-    reconnection: true,
-    reconnectionAttempts: 10, // Increased attempts
-    reconnectionDelay: 1000, // Start with 1 second
-    reconnectionDelayMax: 5000, // Max 5 seconds between attempts
-    timeout: 20000,
-    autoConnect: true,
-    forceNew: false, // Reuse existing connection
-    rememberUpgrade: true // Remember successful transport
+// Use Render backend URL for socket connection
+const socket = io("https://backend-rideshare-hmlq.onrender.com", {
+  transports: ["websocket", "polling"],
+  withCredentials: true
 });
 
 // Connection status tracking
