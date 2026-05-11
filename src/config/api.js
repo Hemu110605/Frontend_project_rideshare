@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; // Must be set in environment
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://backend-rideshare-1.onrender.com"; // Must be set in environment
 
 export const api = {
   // Auth endpoints

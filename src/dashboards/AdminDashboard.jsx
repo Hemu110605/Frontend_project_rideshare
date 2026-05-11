@@ -393,6 +393,32 @@ export default function AdminDashboard({
     ]
   }
 
+  // Calculate Top Cities from rides data if no backend topCities provided
+  const calculateTopCities = (ridesData) => {
+    const cityMap = {};
+    
+    ridesData.forEach(ride => {
+      const fromCity = ride.from || ride.pickup || 'Unknown';
+      const toCity = ride.to || ride.dropoff || 'Unknown';
+      
+      // Count from city
+      if (fromCity !== 'Unknown') {
+        cityMap[fromCity] = (cityMap[fromCity] || 0) + 1;
+      }
+      
+      // Count to city
+      if (toCity !== 'Unknown') {
+        cityMap[toCity] = (cityMap[toCity] || 0) + 1;
+      }
+    });
+    
+    // Convert to array and sort by rides count
+    return Object.entries(cityMap)
+      .map(([name, rides]) => ({ name, rides }))
+      .sort((a, b) => b.rides - a.rides)
+      .slice(0, 5);
+  };
+
   const safeOverview = {
     totalUsers: dashboardData.overview?.totalUsers ?? overview.totalUsers ?? usersData.length ?? (usersData.length === 0 && !dashboardData.overview?.totalUsers ? demoData.totalUsers : 0),
     totalDrivers: dashboardData.overview?.totalDrivers ?? overview.totalDrivers ?? driversData.length ?? (driversData.length === 0 && !dashboardData.overview?.totalDrivers ? demoData.totalDrivers : 0),
@@ -407,7 +433,7 @@ export default function AdminDashboard({
     completedToday: dashboardData.overview?.completedToday ?? overview.completedToday ?? 0,
     cancelledToday: dashboardData.overview?.cancelledToday ?? overview.cancelledToday ?? 0,
     growth: dashboardData.growth ?? overview.growth ?? {},
-    topCities: Array.isArray(dashboardData.topCities) && dashboardData.topCities.length > 0 ? dashboardData.topCities : Array.isArray(overview.topCities) && overview.topCities.length > 0 ? overview.topCities : demoData.topCities,
+    topCities: Array.isArray(dashboardData.topCities) && dashboardData.topCities.length > 0 ? dashboardData.topCities : Array.isArray(overview.topCities) && overview.topCities.length > 0 ? overview.topCities : calculateTopCities(ridesData),
   }
 
   const safeAnalytics = {
