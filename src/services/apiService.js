@@ -219,6 +219,10 @@ export const rideService = {
 export const adminService = {
   getDashboard: async () => {
     const token = localStorage.getItem('token');
+    // Validate token before sending
+    if (!token || token === 'undefined' || token === 'null' || token.split('.').length !== 3) {
+      throw new Error('Invalid or missing authentication token');
+    }
     return await apiRequest(api.admin.dashboard, {
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -228,6 +232,10 @@ export const adminService = {
 
   getUsers: async (params = {}) => {
     const token = localStorage.getItem('token');
+    // Validate token before sending
+    if (!token || token === 'undefined' || token === 'null' || token.split('.').length !== 3) {
+      throw new Error('Invalid or missing authentication token');
+    }
     const queryString = new URLSearchParams(params).toString();
     const url = queryString ? `${api.admin.users}?${queryString}` : api.admin.users;
     const response = await apiRequest(url, {
@@ -244,6 +252,10 @@ export const adminService = {
 
   getDrivers: async (params = {}) => {
     const token = localStorage.getItem('token');
+    // Validate token before sending
+    if (!token || token === 'undefined' || token === 'null' || token.split('.').length !== 3) {
+      throw new Error('Invalid or missing authentication token');
+    }
     const queryString = new URLSearchParams(params).toString();
     const url = queryString ? `${api.admin.drivers}?${queryString}` : api.admin.drivers;
     const response = await apiRequest(url, {
@@ -260,6 +272,10 @@ export const adminService = {
 
   getRides: async (params = {}) => {
     const token = localStorage.getItem('token');
+    // Validate token before sending
+    if (!token || token === 'undefined' || token === 'null' || token.split('.').length !== 3) {
+      throw new Error('Invalid or missing authentication token');
+    }
     const queryString = new URLSearchParams(params).toString();
     const url = queryString ? `${api.admin.rides}?${queryString}` : api.admin.rides;
     const response = await apiRequest(url, {

@@ -46,14 +46,31 @@ export default function App() {
         const token = params.get('token')
         const refreshToken = params.get('refreshToken')
 
-        // Store tokens from Google OAuth redirect
+        // Store tokens from Google OAuth redirect with validation
         if (token && refreshToken) {
-            localStorage.setItem('token', token)
-            localStorage.setItem('refreshToken', refreshToken)
+            // Validate tokens before storing (basic JWT format check)
+            const isValidToken = (token) => {
+                return token && 
+                       typeof token === 'string' && 
+                       token.length > 0 && 
+                       token !== 'undefined' && 
+                       token !== 'null' &&
+                       token.split('.').length === 3; // JWT has 3 parts
+            };
             
-            // Clean up URL parameters
-            const cleanUrl = window.location.pathname
-            window.history.replaceState({}, '', cleanUrl)
+            if (isValidToken(token) && isValidToken(refreshToken)) {
+                localStorage.setItem('token', token)
+                localStorage.setItem('refreshToken', refreshToken)
+                
+                // Clean up URL parameters
+                const cleanUrl = window.location.pathname
+                window.history.replaceState({}, '', cleanUrl)
+            } else {
+                console.error('Invalid token format received from Google OAuth')
+                // Clean up URL parameters even if tokens are invalid
+                const cleanUrl = window.location.pathname
+                window.history.replaceState({}, '', cleanUrl)
+            }
         }
 
         if (page === 'passenger-dashboard') {
