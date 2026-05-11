@@ -99,3 +99,4 @@ export const leaveRoom = (roomId) => {
         console.log('Left room:', roomId);
     }
 };
+export { socket };
