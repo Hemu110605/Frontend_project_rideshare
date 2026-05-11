@@ -369,26 +369,45 @@ export default function AdminDashboard({
 
   const adminProfile = {
     brand: 'RideShare Admin',
-    name: currentUser?.name || currentUser?.fullName || 'Super Admin',
-    email: currentUser?.email || 'admin@rideshare.com',
+    name: 'Super Admin',
+    email: 'admin1@rideshare.com',
     role: currentUser?.role || 'admin',
   }
 
+  // Demo data fallback when API returns empty/zero values
+  const demoData = {
+    totalUsers: 67,
+    totalDrivers: 25,
+    totalRides: 100,
+    totalRevenue: 6600,
+    activeNow: 12,
+    pendingApprovals: 43,
+    todayRides: 0,
+    todayRevenue: 5100,
+    topCities: [
+      { name: 'Ghatkopar', rides: 8 },
+      { name: 'Mira Road', rides: 8 },
+      { name: 'Vashi', rides: 6 },
+      { name: 'Dadar', rides: 5 },
+      { name: 'Kurla', rides: 5 }
+    ]
+  }
+
   const safeOverview = {
-    totalUsers: dashboardData.overview?.totalUsers ?? overview.totalUsers ?? usersData.length ?? 0,
-    totalDrivers: dashboardData.overview?.totalDrivers ?? overview.totalDrivers ?? driversData.length ?? 0,
-    totalRides: dashboardData.overview?.totalRides ?? overview.totalRides ?? ridesData.length ?? 0,
-    totalRevenue: dashboardData.overview?.totalRevenue ?? overview.totalRevenue ?? 0,
-    activeNow: dashboardData.overview?.activeRides ?? overview.activeNow ?? 0,
-    pendingApprovals: dashboardData.overview?.pendingBookings ?? overview.pendingApprovals ?? bookingsData.length ?? 0,
-    todayRides: dashboardData.overview?.todayRides ?? overview.todayRides ?? 0,
-    todayRevenue: dashboardData.overview?.todayRevenue ?? overview.todayRevenue ?? 0,
+    totalUsers: dashboardData.overview?.totalUsers ?? overview.totalUsers ?? usersData.length ?? (usersData.length === 0 && !dashboardData.overview?.totalUsers ? demoData.totalUsers : 0),
+    totalDrivers: dashboardData.overview?.totalDrivers ?? overview.totalDrivers ?? driversData.length ?? (driversData.length === 0 && !dashboardData.overview?.totalDrivers ? demoData.totalDrivers : 0),
+    totalRides: dashboardData.overview?.totalRides ?? overview.totalRides ?? ridesData.length ?? (ridesData.length === 0 && !dashboardData.overview?.totalRides ? demoData.totalRides : 0),
+    totalRevenue: dashboardData.overview?.totalRevenue ?? overview.totalRevenue ?? (dashboardData.overview?.totalRevenue === 0 && overview.totalRevenue === 0 ? demoData.totalRevenue : 0),
+    activeNow: dashboardData.overview?.activeRides ?? overview.activeNow ?? (dashboardData.overview?.activeRides === 0 && overview.activeNow === 0 ? demoData.activeNow : 0),
+    pendingApprovals: dashboardData.overview?.pendingBookings ?? overview.pendingApprovals ?? bookingsData.length ?? (bookingsData.length === 0 && !dashboardData.overview?.pendingBookings ? demoData.pendingApprovals : 0),
+    todayRides: dashboardData.overview?.todayRides ?? overview.todayRides ?? (dashboardData.overview?.todayRides === 0 && overview.todayRides === 0 ? demoData.todayRides : 0),
+    todayRevenue: dashboardData.overview?.todayRevenue ?? overview.todayRevenue ?? (dashboardData.overview?.todayRevenue === 0 && overview.todayRevenue === 0 ? demoData.todayRevenue : 0),
     activeRides: dashboardData.overview?.activeRides ?? overview.activeRides ?? 0,
     pendingRides: dashboardData.overview?.pendingBookings ?? overview.pendingRides ?? 0,
     completedToday: dashboardData.overview?.completedToday ?? overview.completedToday ?? 0,
     cancelledToday: dashboardData.overview?.cancelledToday ?? overview.cancelledToday ?? 0,
     growth: dashboardData.growth ?? overview.growth ?? {},
-    topCities: Array.isArray(dashboardData.topCities) ? dashboardData.topCities : Array.isArray(overview.topCities) ? overview.topCities : [],
+    topCities: Array.isArray(dashboardData.topCities) && dashboardData.topCities.length > 0 ? dashboardData.topCities : Array.isArray(overview.topCities) && overview.topCities.length > 0 ? overview.topCities : demoData.topCities,
   }
 
   const safeAnalytics = {
