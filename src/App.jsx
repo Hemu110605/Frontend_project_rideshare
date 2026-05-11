@@ -43,6 +43,18 @@ export default function App() {
 
         const params = new URLSearchParams(window.location.search)
         const page = params.get('page')
+        const token = params.get('token')
+        const refreshToken = params.get('refreshToken')
+
+        // Store tokens from Google OAuth redirect
+        if (token && refreshToken) {
+            localStorage.setItem('token', token)
+            localStorage.setItem('refreshToken', refreshToken)
+            
+            // Clean up URL parameters
+            const cleanUrl = window.location.pathname
+            window.history.replaceState({}, '', cleanUrl)
+        }
 
         if (page === 'passenger-dashboard') {
             setCurrentPage('passenger-dashboard')
