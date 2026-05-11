@@ -1,7 +1,7 @@
 import { io } from 'socket.io-client';
 
 // Use Render backend URL for socket connection
-const socket = io("https://backend-rideshare-hmlq.onrender.com", {
+const socket = io("https://backend-rideshare-1.onrender.com", {
   transports: ["websocket", "polling"],
   withCredentials: true
 });

@@ -221,7 +221,7 @@ export default function PassengerLogin({ setCurrentPage, handleLogin }) {
                             type="button"
                             className="passenger-social-btn google-btn"
                             onClick={() => {
-                                window.location.href = `${import.meta.env.VITE_API_BASE_URL}/api/auth/google`
+                                window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/google`
                             }}
                         >
                             <span className="social-icon">

@@ -226,7 +226,7 @@ export default function DriverLogin({ setCurrentPage, handleLogin }) {
                             type="button"
                             className="passenger-social-btn google-btn"
                             onClick={() => {
-                                window.location.href = 'https://backend-rideshare-hmlq.onrender.com/api/auth/google';
+                                window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/google`;
                             }}
                         >
                             <span className="social-icon">
