@@ -1,9 +1,15 @@
 import { io } from 'socket.io-client';
 
-// Use Render backend URL for socket connection
-const socket = io("https://backend-rideshare-1.onrender.com", {
-  transports: ["websocket", "polling"],
-  withCredentials: true
+// Use local backend URL for development, fallback to production
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5002";
+
+const socket = io(API_URL, {
+  transports: ["polling", "websocket"],
+  withCredentials: true,
+  timeout: 20000,
+  reconnection: true,
+  reconnectionAttempts: 5,
+  reconnectionDelay: 1000
 });
 
 // Connection status tracking
